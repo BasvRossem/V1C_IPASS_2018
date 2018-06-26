@@ -13,6 +13,22 @@ void MPU6050::wakeUp(){
 	i2c_bus.write(deviceAddress, data, 2);
 }
 
+byte MPU6050::read8bit(const byte & address){
+	byte data[] = {address};
+	i2c_bus.write(deviceAddress, data, sizeof(data) / sizeof(byte));
+	i2c_bus.read(deviceAddress, data, sizeof(data) / sizeof(byte));
+	return *data;
+}
+
+int16_t MPU6050::read16bit(const byte & addressHigh, const byte & addressLow){
+	byte dataHigh = read8bit(addressHigh);
+	byte dataLow = read8bit(addressLow);
+	int16_t conversion = (dataHigh << 8) + dataLow;
+	return conversion;
+}
+
+
+
 void MPU6050::setAccelGyro(){
 	setAccel();
 	setGyro();
@@ -23,31 +39,13 @@ void MPU6050::setAccel(){
 	setAccelZ();
 }
 void MPU6050::setAccelX(){
-	byte dataHigh[] = {MPU6050_ACCEL_XOUT_H};
-	byte dataLow[] = {MPU6050_ACCEL_XOUT_L};
-	i2c_bus.write(deviceAddress, dataHigh, sizeof(dataHigh) / sizeof(byte));
-	i2c_bus.read(deviceAddress, dataHigh, sizeof(dataHigh) / sizeof(byte));
-	i2c_bus.write(deviceAddress, dataLow, sizeof(dataLow) / sizeof(byte));
-	i2c_bus.read(deviceAddress, dataLow, sizeof(dataLow) / sizeof(byte));
-	accelX = (dataHigh[0] << 8) + dataLow[0];
+	accelX = read16bit(MPU6050_ACCEL_XOUT_H, MPU6050_ACCEL_XOUT_L);
 }
 void MPU6050::setAccelY(){
-	byte dataHigh[] = {MPU6050_ACCEL_YOUT_H};
-	byte dataLow[] = {MPU6050_ACCEL_YOUT_L};
-	i2c_bus.write(deviceAddress, dataHigh, sizeof(dataHigh) / sizeof(byte));
-	i2c_bus.read(deviceAddress, dataHigh, sizeof(dataHigh) / sizeof(byte));
-	i2c_bus.write(deviceAddress, dataLow, sizeof(dataHigh) / sizeof(byte));
-	i2c_bus.read(deviceAddress, dataLow, sizeof(dataHigh) / sizeof(byte));
-	accelY = (dataHigh[0] << 8) + dataLow[0];
+	accelY = read16bit(MPU6050_ACCEL_YOUT_H, MPU6050_ACCEL_YOUT_L);
 }
 void MPU6050::setAccelZ(){
-	byte dataHigh[] = {MPU6050_ACCEL_ZOUT_H};
-	byte dataLow[] = {MPU6050_ACCEL_ZOUT_L};
-	i2c_bus.write(deviceAddress, dataHigh, sizeof(dataHigh) / sizeof(byte));
-	i2c_bus.read(deviceAddress, dataHigh, sizeof(dataHigh) / sizeof(byte));
-	i2c_bus.write(deviceAddress, dataLow, sizeof(dataHigh) / sizeof(byte));
-	i2c_bus.read(deviceAddress, dataLow, sizeof(dataHigh) / sizeof(byte));
-	accelZ = (dataHigh[0] << 8) + dataLow[0];
+	accelZ = read16bit(MPU6050_ACCEL_ZOUT_H, MPU6050_ACCEL_ZOUT_L);
 }
 int16_t MPU6050::getAccelX(){
 	return accelX;
@@ -65,31 +63,13 @@ void MPU6050::setGyro(){
 	setGyroZ();
 }
 void MPU6050::setGyroX(){
-	byte dataHigh[] = {MPU6050_GYRO_XOUT_H};
-	byte dataLow[] = {MPU6050_GYRO_XOUT_L};
-	i2c_bus.write(deviceAddress, dataHigh, sizeof(dataHigh) / sizeof(byte));
-	i2c_bus.read(deviceAddress, dataHigh, sizeof(dataHigh) / sizeof(byte));
-	i2c_bus.write(deviceAddress, dataLow, sizeof(dataHigh) / sizeof(byte));
-	i2c_bus.read(deviceAddress, dataLow, sizeof(dataHigh) / sizeof(byte));
-	gyroX = (dataHigh[0] << 8) + dataLow[0];
+	gyroX = read16bit(MPU6050_GYRO_XOUT_H, MPU6050_GYRO_XOUT_L);
 }
 void MPU6050::setGyroY(){
-	byte dataHigh[] = {MPU6050_GYRO_YOUT_H};
-	byte dataLow[] = {MPU6050_GYRO_YOUT_L};
-	i2c_bus.write(deviceAddress, dataHigh, sizeof(dataHigh) / sizeof(byte));
-	i2c_bus.read(deviceAddress, dataHigh, sizeof(dataHigh) / sizeof(byte));
-	i2c_bus.write(deviceAddress, dataLow, sizeof(dataHigh) / sizeof(byte));
-	i2c_bus.read(deviceAddress, dataLow, sizeof(dataHigh) / sizeof(byte));
-	gyroY = (dataHigh[0] << 8) + dataLow[0];
+	gyroY = read16bit(MPU6050_GYRO_YOUT_H, MPU6050_GYRO_YOUT_L);
 }
 void MPU6050::setGyroZ(){
-	byte dataHigh[] = {MPU6050_GYRO_ZOUT_H};
-	byte dataLow[] = {MPU6050_GYRO_ZOUT_L};
-	i2c_bus.write(deviceAddress, dataHigh, sizeof(dataHigh) / sizeof(byte));
-	i2c_bus.read(deviceAddress, dataHigh, sizeof(dataHigh) / sizeof(byte));
-	i2c_bus.write(deviceAddress, dataLow, sizeof(dataHigh) / sizeof(byte));
-	i2c_bus.read(deviceAddress, dataLow, sizeof(dataHigh) / sizeof(byte));
-	gyroZ = (dataHigh[0] << 8) + dataLow[0];
+	gyroZ = read16bit(MPU6050_GYRO_ZOUT_H, MPU6050_GYRO_ZOUT_L);
 }
 int16_t MPU6050::getGyroX(){
 	return gyroX;
@@ -99,4 +79,49 @@ int16_t MPU6050::getGyroY(){
 }
 int16_t MPU6050::getGyroZ(){
 	return gyroZ;
+}
+
+void MPU6050::calibrate(){
+	hwlib::cout << "Calibration started, keep device still.\n";
+	hwlib::wait_ms(250);
+	uint32_t deltaAccelX = 0, deltaAccelY = 0, deltaAccelZ = 0;
+	uint32_t deltaGyroX = 0, deltaGyroY = 0, deltaGyroZ = 0;
+	for(unsigned int i = 0; i < 50; i++){
+		setAccelGyro();
+		deltaAccelX += getAccelX();
+		deltaAccelY += getAccelY();
+		deltaAccelZ += getAccelZ();
+		
+		deltaGyroX += getGyroX();
+		deltaGyroY += getGyroY();
+		deltaGyroZ += getGyroZ();
+		hwlib::wait_ms(50);
+	}
+	offsetAccelX = deltaAccelX / 50;
+	offsetAccelY = deltaAccelY / 50; 
+	offsetAccelZ = deltaAccelZ / 50;
+	offsetGyroX = deltaGyroX / 50; 
+	offsetGyroY = deltaGyroY / 50; 
+	offsetGyroZ = deltaGyroZ / 50;
+	hwlib::cout << "Calibration complete.\n";
+}
+
+uint16_t MPU6050::getOffsetAccelX(){
+	return offsetAccelX;
+}
+uint16_t MPU6050::getOffsetAccelY(){
+	return offsetAccelY;
+}
+uint16_t MPU6050::getOffsetAccelZ(){
+	return offsetAccelZ;
+}
+
+uint16_t MPU6050::getOffsetGyroX(){
+	return offsetGyroX;
+}
+uint16_t MPU6050::getOffsetGyroY(){
+	return offsetGyroY;
+}
+uint16_t MPU6050::getOffsetGyroZ(){
+	return offsetGyroZ;
 }
