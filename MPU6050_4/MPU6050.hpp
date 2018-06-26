@@ -18,6 +18,10 @@ private:
 	uint16_t accelX, accelY, accelZ;
 	uint16_t gyroX, gyroY, gyroZ;
 	
+	//Offset
+	uint16_t offsetAccelX, offsetAccelY, offsetAccelZ;
+	uint16_t offsetGyroX, offsetGyroY, offsetGyroZ;
+	
 	//Readable values
 	double gForceX, gForceY, gForceZ;
 	double rotX, rotY, rotZ;
@@ -171,6 +175,10 @@ public:
 	
 	int whoAmI();
 	void wakeUp();
+	byte read8bit(const byte & address);
+	int16_t read16bit(const byte & addressHigh, const byte & addressLow);
+	
+	void calibrate();
 	
 	void setAccelGyro();
 	void setAccel();
@@ -188,6 +196,14 @@ public:
 	int16_t getGyroX();
 	int16_t getGyroY();
 	int16_t getGyroZ();
+	
+	uint16_t getOffsetAccelX();
+	uint16_t getOffsetAccelY();
+	uint16_t getOffsetAccelZ();
+	
+	uint16_t getOffsetGyroX();
+	uint16_t getOffsetGyroY();
+	uint16_t getOffsetGyroZ();
 };
 
 #endif // MPU6050_HPP
