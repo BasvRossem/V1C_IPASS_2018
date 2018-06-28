@@ -1,0 +1,513 @@
+\hypertarget{class_m_p_u6050}{}\section{M\+P\+U6050 Class Reference}
+\label{class_m_p_u6050}\index{M\+P\+U6050@{M\+P\+U6050}}
+
+
+{\ttfamily \#include $<$M\+P\+U6050.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_m_p_u6050_a5bb94c2ee72b6555f89fbd5b14dd0460}{M\+P\+U6050}} (hwlib\+::i2c\+\_\+bus\+\_\+bit\+\_\+banged\+\_\+scl\+\_\+sda \&i2c\+\_\+bus, const \mbox{\hyperlink{_m_p_u6050_8hpp_a71809484a26cd96c6abe839a0a8a289d}{byte}} address=0x68)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_m_p_u6050_a1b3f024861c18e17790ebb560d5bdd32}{who\+AmI}} ()
+\begin{DoxyCompactList}\small\item\em Returns address. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_m_p_u6050_a14d45cb8c0d8744bd280ca7d05e5d962}{wake\+Up}} ()
+\begin{DoxyCompactList}\small\item\em Wake up the M\+PU. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_m_p_u6050_8hpp_a71809484a26cd96c6abe839a0a8a289d}{byte}} \mbox{\hyperlink{class_m_p_u6050_a8eb2aeeb0c15bc5f756fc5c5ba958332}{read8bit}} (const \mbox{\hyperlink{_m_p_u6050_8hpp_a71809484a26cd96c6abe839a0a8a289d}{byte}} \&address)
+\begin{DoxyCompactList}\small\item\em Read a Byte. \end{DoxyCompactList}\item 
+int16\+\_\+t \mbox{\hyperlink{class_m_p_u6050_a4636841f6b3432d8d45726fcdcdcfed8}{read16bit}} (const \mbox{\hyperlink{_m_p_u6050_8hpp_a71809484a26cd96c6abe839a0a8a289d}{byte}} \&address\+High, const \mbox{\hyperlink{_m_p_u6050_8hpp_a71809484a26cd96c6abe839a0a8a289d}{byte}} \&address\+Low)
+\begin{DoxyCompactList}\small\item\em Read Two Bytes. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_m_p_u6050_a35657154dd30e206e09ea6407ede106c}{calibrate}} ()
+\begin{DoxyCompactList}\small\item\em Calibrate Mpu6050. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_m_p_u6050_abbd800900f0d3a98265277e1b8f7127e}{set\+Temp}} ()
+\begin{DoxyCompactList}\small\item\em Measure temperatue. \end{DoxyCompactList}\item 
+int16\+\_\+t \mbox{\hyperlink{class_m_p_u6050_aedd4952858c54d552041748abf6c68f5}{get\+Temp\+In\+Celcius}} ()
+\begin{DoxyCompactList}\small\item\em Return Temperature Celcuis. \end{DoxyCompactList}\item 
+int16\+\_\+t \mbox{\hyperlink{class_m_p_u6050_a7d0647ec805da5e48d683bc39d9e5a6c}{get\+Temp}} ()
+\begin{DoxyCompactList}\small\item\em Return Temperature. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_m_p_u6050_afae60a3ddfba42ead3c29069e3715e11}{set\+Full\+Scale\+Gyro\+Range}} (\mbox{\hyperlink{_m_p_u6050_8hpp_a71809484a26cd96c6abe839a0a8a289d}{byte}} range)
+\begin{DoxyCompactList}\small\item\em Set Gyroscope Range. \end{DoxyCompactList}\item 
+int16\+\_\+t \mbox{\hyperlink{class_m_p_u6050_af5bb476a5c5960a234ce87ff6cfbc495}{get\+Full\+Scale\+Gyro\+Sensitivity}} ()
+\begin{DoxyCompactList}\small\item\em Return Gyroscope Sensitivity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_m_p_u6050_ad97b755c7023408decb2178fd6c0de96}{set\+Full\+Scale\+Accel\+Range}} (\mbox{\hyperlink{_m_p_u6050_8hpp_a71809484a26cd96c6abe839a0a8a289d}{byte}} range)
+\begin{DoxyCompactList}\small\item\em Set Accelerometer Range. \end{DoxyCompactList}\item 
+int16\+\_\+t \mbox{\hyperlink{class_m_p_u6050_afb431ff03c361fbbfc43e668996be195}{get\+Full\+Scale\+Accel\+Sensitivity}} ()
+\begin{DoxyCompactList}\small\item\em Return Gyroscope Sensitivity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_m_p_u6050_a25bc66e46d8f4ddfcd75b9e04c3d51b9}{set\+Accel\+Gyro}} ()
+\begin{DoxyCompactList}\small\item\em Measure Accelerometer and Gyroscope. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_m_p_u6050_ab4b3c0b6ac0c3217bf72739ede81f31b}{set\+Accel}} ()
+\begin{DoxyCompactList}\small\item\em Measure Accelerometer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_m_p_u6050_a99382dd9d3e36f575a020d6f5ee0631a}{set\+AccelX}} ()
+\begin{DoxyCompactList}\small\item\em Measure Accelerometer X. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_m_p_u6050_ab2a793e509a772f3e67990194b774688}{set\+AccelY}} ()
+\begin{DoxyCompactList}\small\item\em Measure Accelerometer Y. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_m_p_u6050_aee6033621345411ef54bca39bdcb7b19}{set\+AccelZ}} ()
+\begin{DoxyCompactList}\small\item\em Measure Accelerometer Z. \end{DoxyCompactList}\item 
+int16\+\_\+t \mbox{\hyperlink{class_m_p_u6050_aec768f09d9fb4a578a67ac56cefb1f65}{get\+AccelX}} ()
+\begin{DoxyCompactList}\small\item\em Return Accel X. \end{DoxyCompactList}\item 
+int16\+\_\+t \mbox{\hyperlink{class_m_p_u6050_a5a6328a583b3eabcd69c63f7b3e5fc78}{get\+AccelY}} ()
+\begin{DoxyCompactList}\small\item\em Return Accel Y. \end{DoxyCompactList}\item 
+int16\+\_\+t \mbox{\hyperlink{class_m_p_u6050_a67d656ca5338e7c4f791c19838ae7c53}{get\+AccelZ}} ()
+\begin{DoxyCompactList}\small\item\em Return Accel Z. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_m_p_u6050_aaf1a878aa47a35907b583beb4cbcff23}{set\+Gyro}} ()
+\begin{DoxyCompactList}\small\item\em Measure Gyroscope. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_m_p_u6050_a46b0b1dc134fd76791f84b577c4cf4d2}{set\+GyroX}} ()
+\begin{DoxyCompactList}\small\item\em Measure Gyroscope X. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_m_p_u6050_aeaf72bc3ae93a553221dbbc0a2aaa3c4}{set\+GyroY}} ()
+\begin{DoxyCompactList}\small\item\em Measure Gyroscope Y. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_m_p_u6050_a710f9cf1589d8e4dcd26bc5e3bc55e66}{set\+GyroZ}} ()
+\begin{DoxyCompactList}\small\item\em Measure Gyroscope Z. \end{DoxyCompactList}\item 
+int16\+\_\+t \mbox{\hyperlink{class_m_p_u6050_a6da3ae068a2bc895eb24e19c073eef97}{get\+GyroX}} ()
+\begin{DoxyCompactList}\small\item\em Return Gyro X. \end{DoxyCompactList}\item 
+int16\+\_\+t \mbox{\hyperlink{class_m_p_u6050_a596664a8580696b30b614285ed8cb7fe}{get\+GyroY}} ()
+\begin{DoxyCompactList}\small\item\em Return Gyro Y. \end{DoxyCompactList}\item 
+int16\+\_\+t \mbox{\hyperlink{class_m_p_u6050_a4caf0233714ab9815e860eba4c167aad}{get\+GyroZ}} ()
+\begin{DoxyCompactList}\small\item\em Return Gyro Z. \end{DoxyCompactList}\item 
+int16\+\_\+t \mbox{\hyperlink{class_m_p_u6050_ad399b5702208fd9bad445abd25c16182}{get\+Offset\+AccelX}} ()
+\begin{DoxyCompactList}\small\item\em Return Offset Accel X. \end{DoxyCompactList}\item 
+int16\+\_\+t \mbox{\hyperlink{class_m_p_u6050_a7e5f5deae1205dd2877da8c53f62bafc}{get\+Offset\+AccelY}} ()
+\begin{DoxyCompactList}\small\item\em Return Offset Accelerometer Y. \end{DoxyCompactList}\item 
+int16\+\_\+t \mbox{\hyperlink{class_m_p_u6050_abc8a1ecec8e5ac7f83d9162ec5c55eb3}{get\+Offset\+AccelZ}} ()
+\begin{DoxyCompactList}\small\item\em Return Offset Accelerometer Z. \end{DoxyCompactList}\item 
+int16\+\_\+t \mbox{\hyperlink{class_m_p_u6050_a73866ca532c87f446dfd11cf15746054}{get\+Offset\+GyroX}} ()
+\begin{DoxyCompactList}\small\item\em Return Offset Gyroscope X. \end{DoxyCompactList}\item 
+int16\+\_\+t \mbox{\hyperlink{class_m_p_u6050_a0920360c16a673f8803c9eafebda02ff}{get\+Offset\+GyroY}} ()
+\begin{DoxyCompactList}\small\item\em Return Offset Gyroscope Y. \end{DoxyCompactList}\item 
+int16\+\_\+t \mbox{\hyperlink{class_m_p_u6050_af55bc5b021562e2b6feee7be362901ac}{get\+Offset\+GyroZ}} ()
+\begin{DoxyCompactList}\small\item\em Return Offset Gyroscope Z. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_m_p_u6050_a83e29b3477e8953b16111d5d504a5795}{set\+Rot}} ()
+\begin{DoxyCompactList}\small\item\em Measure Rotation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_m_p_u6050_ad1cfcae9653af68ac64361fcb66b7824}{set\+RotX}} ()
+\begin{DoxyCompactList}\small\item\em Calculate X rotation  Calculate rotations per minute around the x axes by deviding the raw value through the senitivity value, which is gotten in get\+Full\+Scale\+Gyro\+Sensitivity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_m_p_u6050_ad8d0842faf2f95f4609111d14d432e5e}{set\+RotY}} ()
+\begin{DoxyCompactList}\small\item\em Calculate Y rotation  Calculate rotations per minute around the y axes by deviding the raw value through the senitivity value, which is gotten in get\+Full\+Scale\+Gyro\+Sensitivity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_m_p_u6050_a731b428be8965d86832124c0e429019d}{set\+RotZ}} ()
+\begin{DoxyCompactList}\small\item\em Calculate Z rotation  Calculate rotations per minute around the z axes by deviding the raw value through the senitivity value, which is gotten in get\+Full\+Scale\+Gyro\+Sensitivity. \end{DoxyCompactList}\item 
+int16\+\_\+t \mbox{\hyperlink{class_m_p_u6050_acf1eaa804de62955ddd1c629e5b7183b}{get\+RotX}} ()
+\begin{DoxyCompactList}\small\item\em Return Rotation X  Returns the rotx value, which is calculated in set\+RotX. \end{DoxyCompactList}\item 
+int16\+\_\+t \mbox{\hyperlink{class_m_p_u6050_abbbcdf91120387b4c3a403640622c431}{get\+RotY}} ()
+\begin{DoxyCompactList}\small\item\em Return Rotation Y  Returns the roty value, which is calculated in set\+RotY. \end{DoxyCompactList}\item 
+int16\+\_\+t \mbox{\hyperlink{class_m_p_u6050_a82a4cae5502dff15b75aa43ab0a03ebf}{get\+RotZ}} ()
+\begin{DoxyCompactList}\small\item\em Return Rotation Z  Returns the rotZ value, which is calculated in set\+RotZ. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_m_p_u6050_a5bb94c2ee72b6555f89fbd5b14dd0460}\label{class_m_p_u6050_a5bb94c2ee72b6555f89fbd5b14dd0460}} 
+\index{M\+P\+U6050@{M\+P\+U6050}!M\+P\+U6050@{M\+P\+U6050}}
+\index{M\+P\+U6050@{M\+P\+U6050}!M\+P\+U6050@{M\+P\+U6050}}
+\subsubsection{\texorpdfstring{M\+P\+U6050()}{MPU6050()}}
+{\footnotesize\ttfamily M\+P\+U6050\+::\+M\+P\+U6050 (\begin{DoxyParamCaption}\item[{hwlib\+::i2c\+\_\+bus\+\_\+bit\+\_\+banged\+\_\+scl\+\_\+sda \&}]{i2c\+\_\+bus,  }\item[{const \mbox{\hyperlink{_m_p_u6050_8hpp_a71809484a26cd96c6abe839a0a8a289d}{byte}}}]{address = {\ttfamily 0x68} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor. 
+
+The constuctor wants a I2C bit banged class object. It is also possible to give a mpu address, but most of the time 0x68 is used. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_m_p_u6050_a35657154dd30e206e09ea6407ede106c}\label{class_m_p_u6050_a35657154dd30e206e09ea6407ede106c}} 
+\index{M\+P\+U6050@{M\+P\+U6050}!calibrate@{calibrate}}
+\index{calibrate@{calibrate}!M\+P\+U6050@{M\+P\+U6050}}
+\subsubsection{\texorpdfstring{calibrate()}{calibrate()}}
+{\footnotesize\ttfamily void M\+P\+U6050\+::calibrate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Calibrate Mpu6050. 
+
+Measures the values which the gyroscope and accelerometer return. It will measure 50 times and takes the averages of the measurements. These averages are stored for later use. \mbox{\Hypertarget{class_m_p_u6050_aec768f09d9fb4a578a67ac56cefb1f65}\label{class_m_p_u6050_aec768f09d9fb4a578a67ac56cefb1f65}} 
+\index{M\+P\+U6050@{M\+P\+U6050}!get\+AccelX@{get\+AccelX}}
+\index{get\+AccelX@{get\+AccelX}!M\+P\+U6050@{M\+P\+U6050}}
+\subsubsection{\texorpdfstring{get\+Accel\+X()}{getAccelX()}}
+{\footnotesize\ttfamily int16\+\_\+t M\+P\+U6050\+::get\+AccelX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Return Accel X. 
+
+Returnes the accelerometer x value, which is set by the set\+AccelX function. \mbox{\Hypertarget{class_m_p_u6050_a5a6328a583b3eabcd69c63f7b3e5fc78}\label{class_m_p_u6050_a5a6328a583b3eabcd69c63f7b3e5fc78}} 
+\index{M\+P\+U6050@{M\+P\+U6050}!get\+AccelY@{get\+AccelY}}
+\index{get\+AccelY@{get\+AccelY}!M\+P\+U6050@{M\+P\+U6050}}
+\subsubsection{\texorpdfstring{get\+Accel\+Y()}{getAccelY()}}
+{\footnotesize\ttfamily int16\+\_\+t M\+P\+U6050\+::get\+AccelY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Return Accel Y. 
+
+Returnes the accelerometer y value, which is set by the set\+AccelY function. \mbox{\Hypertarget{class_m_p_u6050_a67d656ca5338e7c4f791c19838ae7c53}\label{class_m_p_u6050_a67d656ca5338e7c4f791c19838ae7c53}} 
+\index{M\+P\+U6050@{M\+P\+U6050}!get\+AccelZ@{get\+AccelZ}}
+\index{get\+AccelZ@{get\+AccelZ}!M\+P\+U6050@{M\+P\+U6050}}
+\subsubsection{\texorpdfstring{get\+Accel\+Z()}{getAccelZ()}}
+{\footnotesize\ttfamily int16\+\_\+t M\+P\+U6050\+::get\+AccelZ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Return Accel Z. 
+
+Returnes the accelerometer z value, which is set by the set\+AccelZ function. \mbox{\Hypertarget{class_m_p_u6050_afb431ff03c361fbbfc43e668996be195}\label{class_m_p_u6050_afb431ff03c361fbbfc43e668996be195}} 
+\index{M\+P\+U6050@{M\+P\+U6050}!get\+Full\+Scale\+Accel\+Sensitivity@{get\+Full\+Scale\+Accel\+Sensitivity}}
+\index{get\+Full\+Scale\+Accel\+Sensitivity@{get\+Full\+Scale\+Accel\+Sensitivity}!M\+P\+U6050@{M\+P\+U6050}}
+\subsubsection{\texorpdfstring{get\+Full\+Scale\+Accel\+Sensitivity()}{getFullScaleAccelSensitivity()}}
+{\footnotesize\ttfamily int16\+\_\+t M\+P\+U6050\+::get\+Full\+Scale\+Accel\+Sensitivity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Return Gyroscope Sensitivity. 
+
+Returns the sensitivity value used in converting the raw values to understandable values. These values are specified in the datasheet and are\+: Range$\vert$\+Sensitivity 0 $\vert$ 16384.\+0 1 $\vert$ 8192.\+0 2 $\vert$ 4096.\+0 3 $\vert$ 2048.\+0 \mbox{\Hypertarget{class_m_p_u6050_af5bb476a5c5960a234ce87ff6cfbc495}\label{class_m_p_u6050_af5bb476a5c5960a234ce87ff6cfbc495}} 
+\index{M\+P\+U6050@{M\+P\+U6050}!get\+Full\+Scale\+Gyro\+Sensitivity@{get\+Full\+Scale\+Gyro\+Sensitivity}}
+\index{get\+Full\+Scale\+Gyro\+Sensitivity@{get\+Full\+Scale\+Gyro\+Sensitivity}!M\+P\+U6050@{M\+P\+U6050}}
+\subsubsection{\texorpdfstring{get\+Full\+Scale\+Gyro\+Sensitivity()}{getFullScaleGyroSensitivity()}}
+{\footnotesize\ttfamily int16\+\_\+t M\+P\+U6050\+::get\+Full\+Scale\+Gyro\+Sensitivity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Return Gyroscope Sensitivity. 
+
+Returns the sensitivity value used in converting the raw values to understandable values. These values are specified in the datasheet and are\+: Range $\vert$ Sensitivity 0 $\vert$ 131.\+0 1 $\vert$ 65.\+5 2 $\vert$ 32.\+8 3 $\vert$ 16.\+4 \mbox{\Hypertarget{class_m_p_u6050_a6da3ae068a2bc895eb24e19c073eef97}\label{class_m_p_u6050_a6da3ae068a2bc895eb24e19c073eef97}} 
+\index{M\+P\+U6050@{M\+P\+U6050}!get\+GyroX@{get\+GyroX}}
+\index{get\+GyroX@{get\+GyroX}!M\+P\+U6050@{M\+P\+U6050}}
+\subsubsection{\texorpdfstring{get\+Gyro\+X()}{getGyroX()}}
+{\footnotesize\ttfamily int16\+\_\+t M\+P\+U6050\+::get\+GyroX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Return Gyro X. 
+
+Returnes the gyroscope x value, which is set by the set\+GyroX function. \mbox{\Hypertarget{class_m_p_u6050_a596664a8580696b30b614285ed8cb7fe}\label{class_m_p_u6050_a596664a8580696b30b614285ed8cb7fe}} 
+\index{M\+P\+U6050@{M\+P\+U6050}!get\+GyroY@{get\+GyroY}}
+\index{get\+GyroY@{get\+GyroY}!M\+P\+U6050@{M\+P\+U6050}}
+\subsubsection{\texorpdfstring{get\+Gyro\+Y()}{getGyroY()}}
+{\footnotesize\ttfamily int16\+\_\+t M\+P\+U6050\+::get\+GyroY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Return Gyro Y. 
+
+Returnes the gyroscope y value, which is set by the set\+GyroY function. \mbox{\Hypertarget{class_m_p_u6050_a4caf0233714ab9815e860eba4c167aad}\label{class_m_p_u6050_a4caf0233714ab9815e860eba4c167aad}} 
+\index{M\+P\+U6050@{M\+P\+U6050}!get\+GyroZ@{get\+GyroZ}}
+\index{get\+GyroZ@{get\+GyroZ}!M\+P\+U6050@{M\+P\+U6050}}
+\subsubsection{\texorpdfstring{get\+Gyro\+Z()}{getGyroZ()}}
+{\footnotesize\ttfamily int16\+\_\+t M\+P\+U6050\+::get\+GyroZ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Return Gyro Z. 
+
+Returnes the gyroscope z value, which is set by the set\+GyroZ function. \mbox{\Hypertarget{class_m_p_u6050_ad399b5702208fd9bad445abd25c16182}\label{class_m_p_u6050_ad399b5702208fd9bad445abd25c16182}} 
+\index{M\+P\+U6050@{M\+P\+U6050}!get\+Offset\+AccelX@{get\+Offset\+AccelX}}
+\index{get\+Offset\+AccelX@{get\+Offset\+AccelX}!M\+P\+U6050@{M\+P\+U6050}}
+\subsubsection{\texorpdfstring{get\+Offset\+Accel\+X()}{getOffsetAccelX()}}
+{\footnotesize\ttfamily int16\+\_\+t M\+P\+U6050\+::get\+Offset\+AccelX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Return Offset Accel X. 
+
+Returnes the accelerometer x offset value which is created in \mbox{\hyperlink{class_m_p_u6050_a35657154dd30e206e09ea6407ede106c}{calibrate()}}. \mbox{\Hypertarget{class_m_p_u6050_a7e5f5deae1205dd2877da8c53f62bafc}\label{class_m_p_u6050_a7e5f5deae1205dd2877da8c53f62bafc}} 
+\index{M\+P\+U6050@{M\+P\+U6050}!get\+Offset\+AccelY@{get\+Offset\+AccelY}}
+\index{get\+Offset\+AccelY@{get\+Offset\+AccelY}!M\+P\+U6050@{M\+P\+U6050}}
+\subsubsection{\texorpdfstring{get\+Offset\+Accel\+Y()}{getOffsetAccelY()}}
+{\footnotesize\ttfamily int16\+\_\+t M\+P\+U6050\+::get\+Offset\+AccelY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Return Offset Accelerometer Y. 
+
+Returnes the accelerometer y offset value which is created in \mbox{\hyperlink{class_m_p_u6050_a35657154dd30e206e09ea6407ede106c}{calibrate()}}. \mbox{\Hypertarget{class_m_p_u6050_abc8a1ecec8e5ac7f83d9162ec5c55eb3}\label{class_m_p_u6050_abc8a1ecec8e5ac7f83d9162ec5c55eb3}} 
+\index{M\+P\+U6050@{M\+P\+U6050}!get\+Offset\+AccelZ@{get\+Offset\+AccelZ}}
+\index{get\+Offset\+AccelZ@{get\+Offset\+AccelZ}!M\+P\+U6050@{M\+P\+U6050}}
+\subsubsection{\texorpdfstring{get\+Offset\+Accel\+Z()}{getOffsetAccelZ()}}
+{\footnotesize\ttfamily int16\+\_\+t M\+P\+U6050\+::get\+Offset\+AccelZ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Return Offset Accelerometer Z. 
+
+Returnes the accelerometer Z offset value which is created in \mbox{\hyperlink{class_m_p_u6050_a35657154dd30e206e09ea6407ede106c}{calibrate()}}. \mbox{\Hypertarget{class_m_p_u6050_a73866ca532c87f446dfd11cf15746054}\label{class_m_p_u6050_a73866ca532c87f446dfd11cf15746054}} 
+\index{M\+P\+U6050@{M\+P\+U6050}!get\+Offset\+GyroX@{get\+Offset\+GyroX}}
+\index{get\+Offset\+GyroX@{get\+Offset\+GyroX}!M\+P\+U6050@{M\+P\+U6050}}
+\subsubsection{\texorpdfstring{get\+Offset\+Gyro\+X()}{getOffsetGyroX()}}
+{\footnotesize\ttfamily int16\+\_\+t M\+P\+U6050\+::get\+Offset\+GyroX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Return Offset Gyroscope X. 
+
+Returnes the gyroscope x offset value which is created in \mbox{\hyperlink{class_m_p_u6050_a35657154dd30e206e09ea6407ede106c}{calibrate()}}. \mbox{\Hypertarget{class_m_p_u6050_a0920360c16a673f8803c9eafebda02ff}\label{class_m_p_u6050_a0920360c16a673f8803c9eafebda02ff}} 
+\index{M\+P\+U6050@{M\+P\+U6050}!get\+Offset\+GyroY@{get\+Offset\+GyroY}}
+\index{get\+Offset\+GyroY@{get\+Offset\+GyroY}!M\+P\+U6050@{M\+P\+U6050}}
+\subsubsection{\texorpdfstring{get\+Offset\+Gyro\+Y()}{getOffsetGyroY()}}
+{\footnotesize\ttfamily int16\+\_\+t M\+P\+U6050\+::get\+Offset\+GyroY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Return Offset Gyroscope Y. 
+
+Returnes the gyroscope y offset value which is created in \mbox{\hyperlink{class_m_p_u6050_a35657154dd30e206e09ea6407ede106c}{calibrate()}}. \mbox{\Hypertarget{class_m_p_u6050_af55bc5b021562e2b6feee7be362901ac}\label{class_m_p_u6050_af55bc5b021562e2b6feee7be362901ac}} 
+\index{M\+P\+U6050@{M\+P\+U6050}!get\+Offset\+GyroZ@{get\+Offset\+GyroZ}}
+\index{get\+Offset\+GyroZ@{get\+Offset\+GyroZ}!M\+P\+U6050@{M\+P\+U6050}}
+\subsubsection{\texorpdfstring{get\+Offset\+Gyro\+Z()}{getOffsetGyroZ()}}
+{\footnotesize\ttfamily int16\+\_\+t M\+P\+U6050\+::get\+Offset\+GyroZ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Return Offset Gyroscope Z. 
+
+Returnes the gyroscope z offset value which is created in \mbox{\hyperlink{class_m_p_u6050_a35657154dd30e206e09ea6407ede106c}{calibrate()}}. \mbox{\Hypertarget{class_m_p_u6050_acf1eaa804de62955ddd1c629e5b7183b}\label{class_m_p_u6050_acf1eaa804de62955ddd1c629e5b7183b}} 
+\index{M\+P\+U6050@{M\+P\+U6050}!get\+RotX@{get\+RotX}}
+\index{get\+RotX@{get\+RotX}!M\+P\+U6050@{M\+P\+U6050}}
+\subsubsection{\texorpdfstring{get\+Rot\+X()}{getRotX()}}
+{\footnotesize\ttfamily int16\+\_\+t M\+P\+U6050\+::get\+RotX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Return Rotation X  Returns the rotx value, which is calculated in set\+RotX. 
+
+\mbox{\Hypertarget{class_m_p_u6050_abbbcdf91120387b4c3a403640622c431}\label{class_m_p_u6050_abbbcdf91120387b4c3a403640622c431}} 
+\index{M\+P\+U6050@{M\+P\+U6050}!get\+RotY@{get\+RotY}}
+\index{get\+RotY@{get\+RotY}!M\+P\+U6050@{M\+P\+U6050}}
+\subsubsection{\texorpdfstring{get\+Rot\+Y()}{getRotY()}}
+{\footnotesize\ttfamily int16\+\_\+t M\+P\+U6050\+::get\+RotY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Return Rotation Y  Returns the roty value, which is calculated in set\+RotY. 
+
+\mbox{\Hypertarget{class_m_p_u6050_a82a4cae5502dff15b75aa43ab0a03ebf}\label{class_m_p_u6050_a82a4cae5502dff15b75aa43ab0a03ebf}} 
+\index{M\+P\+U6050@{M\+P\+U6050}!get\+RotZ@{get\+RotZ}}
+\index{get\+RotZ@{get\+RotZ}!M\+P\+U6050@{M\+P\+U6050}}
+\subsubsection{\texorpdfstring{get\+Rot\+Z()}{getRotZ()}}
+{\footnotesize\ttfamily int16\+\_\+t M\+P\+U6050\+::get\+RotZ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Return Rotation Z  Returns the rotZ value, which is calculated in set\+RotZ. 
+
+\mbox{\Hypertarget{class_m_p_u6050_a7d0647ec805da5e48d683bc39d9e5a6c}\label{class_m_p_u6050_a7d0647ec805da5e48d683bc39d9e5a6c}} 
+\index{M\+P\+U6050@{M\+P\+U6050}!get\+Temp@{get\+Temp}}
+\index{get\+Temp@{get\+Temp}!M\+P\+U6050@{M\+P\+U6050}}
+\subsubsection{\texorpdfstring{get\+Temp()}{getTemp()}}
+{\footnotesize\ttfamily int16\+\_\+t M\+P\+U6050\+::get\+Temp (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Return Temperature. 
+
+Returnes the raw temperature value of the chip. this value is set in the set\+Temp function. \mbox{\Hypertarget{class_m_p_u6050_aedd4952858c54d552041748abf6c68f5}\label{class_m_p_u6050_aedd4952858c54d552041748abf6c68f5}} 
+\index{M\+P\+U6050@{M\+P\+U6050}!get\+Temp\+In\+Celcius@{get\+Temp\+In\+Celcius}}
+\index{get\+Temp\+In\+Celcius@{get\+Temp\+In\+Celcius}!M\+P\+U6050@{M\+P\+U6050}}
+\subsubsection{\texorpdfstring{get\+Temp\+In\+Celcius()}{getTempInCelcius()}}
+{\footnotesize\ttfamily int16\+\_\+t M\+P\+U6050\+::get\+Temp\+In\+Celcius (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Return Temperature Celcuis. 
+
+Returns the temperture of the chip in celcuis, this value is set and calculated in the set\+Temp function. \mbox{\Hypertarget{class_m_p_u6050_a4636841f6b3432d8d45726fcdcdcfed8}\label{class_m_p_u6050_a4636841f6b3432d8d45726fcdcdcfed8}} 
+\index{M\+P\+U6050@{M\+P\+U6050}!read16bit@{read16bit}}
+\index{read16bit@{read16bit}!M\+P\+U6050@{M\+P\+U6050}}
+\subsubsection{\texorpdfstring{read16bit()}{read16bit()}}
+{\footnotesize\ttfamily int16\+\_\+t M\+P\+U6050\+::read16bit (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{_m_p_u6050_8hpp_a71809484a26cd96c6abe839a0a8a289d}{byte}} \&}]{address\+High,  }\item[{const \mbox{\hyperlink{_m_p_u6050_8hpp_a71809484a26cd96c6abe839a0a8a289d}{byte}} \&}]{address\+Low }\end{DoxyParamCaption})}
+
+
+
+Read Two Bytes. 
+
+Returns two bytes of data from the specified address using the read8bit function twice. It first takes the high address and reads the data from this address. It will shift these bits 8 spaces left and will add the data which is read from the low address. \mbox{\Hypertarget{class_m_p_u6050_a8eb2aeeb0c15bc5f756fc5c5ba958332}\label{class_m_p_u6050_a8eb2aeeb0c15bc5f756fc5c5ba958332}} 
+\index{M\+P\+U6050@{M\+P\+U6050}!read8bit@{read8bit}}
+\index{read8bit@{read8bit}!M\+P\+U6050@{M\+P\+U6050}}
+\subsubsection{\texorpdfstring{read8bit()}{read8bit()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_m_p_u6050_8hpp_a71809484a26cd96c6abe839a0a8a289d}{byte}} M\+P\+U6050\+::read8bit (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{_m_p_u6050_8hpp_a71809484a26cd96c6abe839a0a8a289d}{byte}} \&}]{address }\end{DoxyParamCaption})}
+
+
+
+Read a Byte. 
+
+Returns one byte of data from the specified address usging the i2c write function to start reading from the specified address. Then it reads the data using the hwlib I2C library and returns the value of the specified address. \mbox{\Hypertarget{class_m_p_u6050_ab4b3c0b6ac0c3217bf72739ede81f31b}\label{class_m_p_u6050_ab4b3c0b6ac0c3217bf72739ede81f31b}} 
+\index{M\+P\+U6050@{M\+P\+U6050}!set\+Accel@{set\+Accel}}
+\index{set\+Accel@{set\+Accel}!M\+P\+U6050@{M\+P\+U6050}}
+\subsubsection{\texorpdfstring{set\+Accel()}{setAccel()}}
+{\footnotesize\ttfamily void M\+P\+U6050\+::set\+Accel (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Measure Accelerometer. 
+
+Measures and sets only the accelerometer values. These values are set in seperate functions for the x, y and z. \mbox{\Hypertarget{class_m_p_u6050_a25bc66e46d8f4ddfcd75b9e04c3d51b9}\label{class_m_p_u6050_a25bc66e46d8f4ddfcd75b9e04c3d51b9}} 
+\index{M\+P\+U6050@{M\+P\+U6050}!set\+Accel\+Gyro@{set\+Accel\+Gyro}}
+\index{set\+Accel\+Gyro@{set\+Accel\+Gyro}!M\+P\+U6050@{M\+P\+U6050}}
+\subsubsection{\texorpdfstring{set\+Accel\+Gyro()}{setAccelGyro()}}
+{\footnotesize\ttfamily void M\+P\+U6050\+::set\+Accel\+Gyro (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Measure Accelerometer and Gyroscope. 
+
+Measures all the accelerometer values by using combining both the accelerometer setter and the gyroscope setter. \mbox{\Hypertarget{class_m_p_u6050_a99382dd9d3e36f575a020d6f5ee0631a}\label{class_m_p_u6050_a99382dd9d3e36f575a020d6f5ee0631a}} 
+\index{M\+P\+U6050@{M\+P\+U6050}!set\+AccelX@{set\+AccelX}}
+\index{set\+AccelX@{set\+AccelX}!M\+P\+U6050@{M\+P\+U6050}}
+\subsubsection{\texorpdfstring{set\+Accel\+X()}{setAccelX()}}
+{\footnotesize\ttfamily void M\+P\+U6050\+::set\+AccelX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Measure Accelerometer X. 
+
+Measures the accelerometer x value using the read16bit function using the x high and x low as the addresses. \mbox{\Hypertarget{class_m_p_u6050_ab2a793e509a772f3e67990194b774688}\label{class_m_p_u6050_ab2a793e509a772f3e67990194b774688}} 
+\index{M\+P\+U6050@{M\+P\+U6050}!set\+AccelY@{set\+AccelY}}
+\index{set\+AccelY@{set\+AccelY}!M\+P\+U6050@{M\+P\+U6050}}
+\subsubsection{\texorpdfstring{set\+Accel\+Y()}{setAccelY()}}
+{\footnotesize\ttfamily void M\+P\+U6050\+::set\+AccelY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Measure Accelerometer Y. 
+
+Measures the accelerometer y value using the read16bit function using the y high and y low as the addresses. \mbox{\Hypertarget{class_m_p_u6050_aee6033621345411ef54bca39bdcb7b19}\label{class_m_p_u6050_aee6033621345411ef54bca39bdcb7b19}} 
+\index{M\+P\+U6050@{M\+P\+U6050}!set\+AccelZ@{set\+AccelZ}}
+\index{set\+AccelZ@{set\+AccelZ}!M\+P\+U6050@{M\+P\+U6050}}
+\subsubsection{\texorpdfstring{set\+Accel\+Z()}{setAccelZ()}}
+{\footnotesize\ttfamily void M\+P\+U6050\+::set\+AccelZ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Measure Accelerometer Z. 
+
+Measures the accelerometer z value using the read16bit function using the z high and z low as the addresses. \mbox{\Hypertarget{class_m_p_u6050_ad97b755c7023408decb2178fd6c0de96}\label{class_m_p_u6050_ad97b755c7023408decb2178fd6c0de96}} 
+\index{M\+P\+U6050@{M\+P\+U6050}!set\+Full\+Scale\+Accel\+Range@{set\+Full\+Scale\+Accel\+Range}}
+\index{set\+Full\+Scale\+Accel\+Range@{set\+Full\+Scale\+Accel\+Range}!M\+P\+U6050@{M\+P\+U6050}}
+\subsubsection{\texorpdfstring{set\+Full\+Scale\+Accel\+Range()}{setFullScaleAccelRange()}}
+{\footnotesize\ttfamily void M\+P\+U6050\+::set\+Full\+Scale\+Accel\+Range (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_m_p_u6050_8hpp_a71809484a26cd96c6abe839a0a8a289d}{byte}}}]{range }\end{DoxyParamCaption})}
+
+
+
+Set Accelerometer Range. 
+
+Set the accelerometer range to a specific range specified in the datasheet, this will be 0, 1, 2 or 3. This value is shifted three bits to the right and will be written to the accelerometer configuration address. \mbox{\Hypertarget{class_m_p_u6050_afae60a3ddfba42ead3c29069e3715e11}\label{class_m_p_u6050_afae60a3ddfba42ead3c29069e3715e11}} 
+\index{M\+P\+U6050@{M\+P\+U6050}!set\+Full\+Scale\+Gyro\+Range@{set\+Full\+Scale\+Gyro\+Range}}
+\index{set\+Full\+Scale\+Gyro\+Range@{set\+Full\+Scale\+Gyro\+Range}!M\+P\+U6050@{M\+P\+U6050}}
+\subsubsection{\texorpdfstring{set\+Full\+Scale\+Gyro\+Range()}{setFullScaleGyroRange()}}
+{\footnotesize\ttfamily void M\+P\+U6050\+::set\+Full\+Scale\+Gyro\+Range (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_m_p_u6050_8hpp_a71809484a26cd96c6abe839a0a8a289d}{byte}}}]{range }\end{DoxyParamCaption})}
+
+
+
+Set Gyroscope Range. 
+
+Set the gyroscope range to a specific range specified in the datasheet, this will be 0, 1, 2 or 3. This value is shifted three bits to the right and will be written to the gyroscope configuration address. \mbox{\Hypertarget{class_m_p_u6050_aaf1a878aa47a35907b583beb4cbcff23}\label{class_m_p_u6050_aaf1a878aa47a35907b583beb4cbcff23}} 
+\index{M\+P\+U6050@{M\+P\+U6050}!set\+Gyro@{set\+Gyro}}
+\index{set\+Gyro@{set\+Gyro}!M\+P\+U6050@{M\+P\+U6050}}
+\subsubsection{\texorpdfstring{set\+Gyro()}{setGyro()}}
+{\footnotesize\ttfamily void M\+P\+U6050\+::set\+Gyro (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Measure Gyroscope. 
+
+Measures and sets only the gyroscope values. These values are set in seperate functions for the x, y and z. \mbox{\Hypertarget{class_m_p_u6050_a46b0b1dc134fd76791f84b577c4cf4d2}\label{class_m_p_u6050_a46b0b1dc134fd76791f84b577c4cf4d2}} 
+\index{M\+P\+U6050@{M\+P\+U6050}!set\+GyroX@{set\+GyroX}}
+\index{set\+GyroX@{set\+GyroX}!M\+P\+U6050@{M\+P\+U6050}}
+\subsubsection{\texorpdfstring{set\+Gyro\+X()}{setGyroX()}}
+{\footnotesize\ttfamily void M\+P\+U6050\+::set\+GyroX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Measure Gyroscope X. 
+
+Measures the gyroscope x value using the read16bit function using the x high and x low as the addresses. \mbox{\Hypertarget{class_m_p_u6050_aeaf72bc3ae93a553221dbbc0a2aaa3c4}\label{class_m_p_u6050_aeaf72bc3ae93a553221dbbc0a2aaa3c4}} 
+\index{M\+P\+U6050@{M\+P\+U6050}!set\+GyroY@{set\+GyroY}}
+\index{set\+GyroY@{set\+GyroY}!M\+P\+U6050@{M\+P\+U6050}}
+\subsubsection{\texorpdfstring{set\+Gyro\+Y()}{setGyroY()}}
+{\footnotesize\ttfamily void M\+P\+U6050\+::set\+GyroY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Measure Gyroscope Y. 
+
+Measures the gyroscope y value using the read16bit function using the y high and y low as the addresses. \mbox{\Hypertarget{class_m_p_u6050_a710f9cf1589d8e4dcd26bc5e3bc55e66}\label{class_m_p_u6050_a710f9cf1589d8e4dcd26bc5e3bc55e66}} 
+\index{M\+P\+U6050@{M\+P\+U6050}!set\+GyroZ@{set\+GyroZ}}
+\index{set\+GyroZ@{set\+GyroZ}!M\+P\+U6050@{M\+P\+U6050}}
+\subsubsection{\texorpdfstring{set\+Gyro\+Z()}{setGyroZ()}}
+{\footnotesize\ttfamily void M\+P\+U6050\+::set\+GyroZ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Measure Gyroscope Z. 
+
+Measures the gyroscope z value using the read16bit function using the z high and z low as the addresses. \mbox{\Hypertarget{class_m_p_u6050_a83e29b3477e8953b16111d5d504a5795}\label{class_m_p_u6050_a83e29b3477e8953b16111d5d504a5795}} 
+\index{M\+P\+U6050@{M\+P\+U6050}!set\+Rot@{set\+Rot}}
+\index{set\+Rot@{set\+Rot}!M\+P\+U6050@{M\+P\+U6050}}
+\subsubsection{\texorpdfstring{set\+Rot()}{setRot()}}
+{\footnotesize\ttfamily void M\+P\+U6050\+::set\+Rot (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Measure Rotation. 
+
+Calculates the rotation values into rotations a minute. It uses the appropriate x, y and z functions to do so. \mbox{\Hypertarget{class_m_p_u6050_ad1cfcae9653af68ac64361fcb66b7824}\label{class_m_p_u6050_ad1cfcae9653af68ac64361fcb66b7824}} 
+\index{M\+P\+U6050@{M\+P\+U6050}!set\+RotX@{set\+RotX}}
+\index{set\+RotX@{set\+RotX}!M\+P\+U6050@{M\+P\+U6050}}
+\subsubsection{\texorpdfstring{set\+Rot\+X()}{setRotX()}}
+{\footnotesize\ttfamily void M\+P\+U6050\+::set\+RotX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Calculate X rotation  Calculate rotations per minute around the x axes by deviding the raw value through the senitivity value, which is gotten in get\+Full\+Scale\+Gyro\+Sensitivity. 
+
+\mbox{\Hypertarget{class_m_p_u6050_ad8d0842faf2f95f4609111d14d432e5e}\label{class_m_p_u6050_ad8d0842faf2f95f4609111d14d432e5e}} 
+\index{M\+P\+U6050@{M\+P\+U6050}!set\+RotY@{set\+RotY}}
+\index{set\+RotY@{set\+RotY}!M\+P\+U6050@{M\+P\+U6050}}
+\subsubsection{\texorpdfstring{set\+Rot\+Y()}{setRotY()}}
+{\footnotesize\ttfamily void M\+P\+U6050\+::set\+RotY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Calculate Y rotation  Calculate rotations per minute around the y axes by deviding the raw value through the senitivity value, which is gotten in get\+Full\+Scale\+Gyro\+Sensitivity. 
+
+\mbox{\Hypertarget{class_m_p_u6050_a731b428be8965d86832124c0e429019d}\label{class_m_p_u6050_a731b428be8965d86832124c0e429019d}} 
+\index{M\+P\+U6050@{M\+P\+U6050}!set\+RotZ@{set\+RotZ}}
+\index{set\+RotZ@{set\+RotZ}!M\+P\+U6050@{M\+P\+U6050}}
+\subsubsection{\texorpdfstring{set\+Rot\+Z()}{setRotZ()}}
+{\footnotesize\ttfamily void M\+P\+U6050\+::set\+RotZ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Calculate Z rotation  Calculate rotations per minute around the z axes by deviding the raw value through the senitivity value, which is gotten in get\+Full\+Scale\+Gyro\+Sensitivity. 
+
+\mbox{\Hypertarget{class_m_p_u6050_abbd800900f0d3a98265277e1b8f7127e}\label{class_m_p_u6050_abbd800900f0d3a98265277e1b8f7127e}} 
+\index{M\+P\+U6050@{M\+P\+U6050}!set\+Temp@{set\+Temp}}
+\index{set\+Temp@{set\+Temp}!M\+P\+U6050@{M\+P\+U6050}}
+\subsubsection{\texorpdfstring{set\+Temp()}{setTemp()}}
+{\footnotesize\ttfamily void M\+P\+U6050\+::set\+Temp (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Measure temperatue. 
+
+Measures the temperature value in 16 bits and sets the temperature. It will also calculate the tempature in celcuis using a formula specified in the datasheet. \mbox{\Hypertarget{class_m_p_u6050_a14d45cb8c0d8744bd280ca7d05e5d962}\label{class_m_p_u6050_a14d45cb8c0d8744bd280ca7d05e5d962}} 
+\index{M\+P\+U6050@{M\+P\+U6050}!wake\+Up@{wake\+Up}}
+\index{wake\+Up@{wake\+Up}!M\+P\+U6050@{M\+P\+U6050}}
+\subsubsection{\texorpdfstring{wake\+Up()}{wakeUp()}}
+{\footnotesize\ttfamily void M\+P\+U6050\+::wake\+Up (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Wake up the M\+PU. 
+
+Wakes up the M\+PU by setting all the bits on the power management address 0. \mbox{\Hypertarget{class_m_p_u6050_a1b3f024861c18e17790ebb560d5bdd32}\label{class_m_p_u6050_a1b3f024861c18e17790ebb560d5bdd32}} 
+\index{M\+P\+U6050@{M\+P\+U6050}!who\+AmI@{who\+AmI}}
+\index{who\+AmI@{who\+AmI}!M\+P\+U6050@{M\+P\+U6050}}
+\subsubsection{\texorpdfstring{who\+Am\+I()}{whoAmI()}}
+{\footnotesize\ttfamily int M\+P\+U6050\+::who\+AmI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns address. 
+
+Using the Who am I register, this function returns the value of the address of the chip which is usually 104. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_m_p_u6050_8hpp}{M\+P\+U6050.\+hpp}}\item 
+\mbox{\hyperlink{_m_p_u6050_8cpp}{M\+P\+U6050.\+cpp}}\end{DoxyCompactItemize}
