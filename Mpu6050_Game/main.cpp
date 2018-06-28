@@ -3,7 +3,6 @@
 #include "rectangle.hpp"
 #include "line.hpp"
 #include "player.hpp"
-#include <stdlib.h>
 
 int randomInt(int max, auto & time, auto & mpu){
 	srand(mpu.getGyroX());
@@ -43,7 +42,7 @@ void control(auto & mpu, auto & person){
 bool checkIfFinished(auto & person, auto & goal){
 	int x = person.getX();
 	int y = person.getY();
-	if(x > goal.getStartX() && x < goal.getEndX() && y > goal.getStartY() && y < goal.getEndY()){
+	if(x >= goal.getStartX() && x <= goal.getEndX() && y >= goal.getStartY() && y <= goal.getEndY()){
 		return true;
 	} else{
 		return false;

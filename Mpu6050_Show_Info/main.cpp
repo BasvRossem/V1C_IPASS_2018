@@ -147,18 +147,21 @@ int main( void ){
 	auto display= hwlib::window_ostream( oled, font );
 	
 	mpu.calibrate();
+	mpu.setFullScaleAccelRange(2);
+	mpu.setFullScaleGyroRange(2);
 	for(;;){
 		mpu.setAccelGyro();
 		mpu.setTemp();
+		mpu.setRot();
 		display << "\f"
 		<< "Who? " << mpu.whoAmI() << "\n" 
 		<< "Temp: " << mpu.getTempInCelcius() << " Celcuis\n" 
 		<< "Accel x: " << mpu.getAccelX() - mpu.getOffsetAccelX() << "\n" 
 		<< "Accel y: " << mpu.getAccelY() - mpu.getOffsetAccelY() << "\n"  
 		<< "Accel z: " << mpu.getAccelZ() - mpu.getOffsetAccelZ() << "\n" 
-		<< "Gyro x: " << mpu.getGyroX() - mpu.getOffsetGyroX()<< "\n" 
-		<< "Gyro y: " << mpu.getGyroY() - mpu.getOffsetGyroX()<< "\n"  
-		<< "Gyro z: " << mpu.getGyroZ() - mpu.getOffsetGyroX()<< "\n" << hwlib::flush;
+		<< "Gyro x: " << mpu.getRotX()/*mpu.getGyroX() - mpu.getOffsetGyroX()*/<< "\n" 
+		<< "Gyro y: " << mpu.getRotY()/*mpu.getGyroY() - mpu.getOffsetGyroX()*/<< "\n"  
+		<< "Gyro z: " << mpu.getRotZ()/*mpu.getGyroZ() - mpu.getOffsetGyroX()*/<< "\n" << hwlib::flush;
 		hwlib::wait_ms(1000);
 	}
 }

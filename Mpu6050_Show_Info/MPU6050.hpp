@@ -14,41 +14,26 @@ private:
 	
 	byte deviceAddress;
 	
-	/// \brief
-	/// Raw Values
-	/// \details
-	/// These are the raw values that the chip returns,
-	/// these include the accelerometer, gyrscope and thermometer values.
+	//Raw values
 	int16_t accelX, accelY, accelZ;
 	int16_t gyroX, gyroY, gyroZ;
 	int16_t temperature;
 	
-	/// \brief
-	/// Offset
-	/// \details
-	/// These are the offset values for the accelerometer and the gyroscope,
-	/// these values are the average over a few measurements,
-	/// they can be used to make the values which are returned more accurate.
+	//Offset values
 	int16_t offsetAccelX, offsetAccelY, offsetAccelZ;
 	int16_t offsetGyroX, offsetGyroY, offsetGyroZ;
 	
-	/// \brief
-	/// Readable Values
-	/// \details
-	/// These are the values after they have been converted into someething understandable.
-	double gForceX, gForceY, gForceZ;
-	double rotX, rotY, rotZ;
+	//Readable values
+	int16_t rotX, rotY, rotZ;
 	int16_t temperatureInCelcius;
 	
-	/// \brief
-	/// Full Scale Range
-	/// \details
-	/// These are the ranges in which the chip can measure
-	byte fullScaleAccelRange;
-	byte fullScaleGyroRange;
+	//range
+	int16_t fullScaleAccelRange;
+	int16_t fullScaleGyroRange;
 	
-	double gyroSensitivity;
-	double accelSensitivity;
+	//Range sensitivity
+	int16_t gyroSensitivity;
+	int16_t accelSensitivity;
 	
 	//MPU6050 Registers
 	//MPU addresses
@@ -192,6 +177,10 @@ private:
 	//Identity
 	const byte MPU6050_WHO_AM_I		= 0x75; 
 public:
+	/// \brief
+	/// Constructor
+	/// \details
+	/// The constuctor wants a I2C bit banged class object. It is also possible to give a mpu address, but most of the time 0x68 is used. 
 	MPU6050(hwlib::i2c_bus_bit_banged_scl_sda & i2c_bus, const byte address = 0x68):
 		i2c_bus(i2c_bus),
 		deviceAddress(address)
@@ -200,144 +189,154 @@ public:
 	/// \brief
 	/// Returns address
 	/// \details
-	/// Using the Who am I returns the value of the address of the chip which is usually 104
+	/// Using the Who am I register, this function returns the value of the address of the chip which is usually 104.
 	int whoAmI();
 	
 	/// \brief
 	/// Wake up the MPU
 	/// \details
-	/// Wakes up the MPU by setting all the bits on the power management address 0
+	/// Wakes up the MPU by setting all the bits on the power management address 0.
 	void wakeUp();
 	/// \brief
 	/// Read a Byte
 	/// \details
-	/// Returns one byte of data from the specified address
+	/// Returns one byte of data from the specified address usging the i2c write function to start reading from the specified address. Then it reads the data using the hwlib I2C library and returns the value of the specified address.
 	byte read8bit(const byte & address);
 	/// \brief
 	/// Read Two Bytes
 	/// \details
-	/// Returns two bytes of data from the specified address
+	/// Returns two bytes of data from the specified address using the read8bit function twice. It first takes the high address and reads the data from this address. It will shift these bits 8 spaces left and will add the data which is read from the low address.
 	int16_t read16bit(const byte & addressHigh, const byte & addressLow);
 	
 	/// \brief
 	/// Calibrate Mpu6050
 	/// \details
-	/// Calculates the average offset of values and sets these offsets
+	/// Measures the values which the gyroscope and accelerometer return. It will measure 50 times and takes the averages of the measurements. These averages are stored for later use.
 	void calibrate();
 	
 	/// \brief
 	/// Measure temperatue
 	/// \details
-	/// Measures the temperature value
+	/// Measures the temperature value in 16 bits and sets the temperature. It will also calculate the tempature in celcuis using a formula specified in the datasheet.
 	void setTemp();
 	/// \brief
 	/// Return Temperature Celcuis
 	/// \details
-	/// Returnes the temperature in celcuis
+	/// Returns the temperture of the chip in celcuis, this value is set and calculated in the setTemp function.
 	int16_t getTempInCelcius();
 	/// \brief
 	/// Return Temperature
 	/// \details
-	/// Returnes the temperature value
+	/// Returnes the raw temperature value of the chip. this value is set in the setTemp function.
 	int16_t getTemp();
 	
 	/// \brief
 	/// Set Gyroscope Range
 	/// \details
-	/// Set the gyroscope range to a specific range specified in the datasheet
+	/// Set the gyroscope range to a specific range specified in the datasheet, this will be 0, 1, 2 or 3. This value is shifted three bits to the right and will be written to the gyroscope configuration address.
 	void setFullScaleGyroRange(byte range);
 	/// \brief
-	/// Return Gyroscope Range
+	/// Return Gyroscope Sensitivity
 	/// \details
-	/// Return the Gyroscope range as specified in the datasheet
-	double getFullScaleGyroRange();
+	/// Returns the sensitivity value used in converting the raw values to understandable values. These values are specified in the datasheet and are:
+	/// Range | Sensitivity
+	/// 0     | 131.0
+	/// 1     | 65.5
+	/// 2     | 32.8
+	/// 3     | 16.4
+	int16_t getFullScaleGyroSensitivity();
 	
 	/// \brief
-	/// Set accelerometer Range
+	/// Set Accelerometer Range
 	/// \details
-	/// Set the accelerometer range to a specific range as specified in the datasheet
+	/// Set the accelerometer range to a specific range specified in the datasheet, this will be 0, 1, 2 or 3. This value is shifted three bits to the right and will be written to the accelerometer configuration address.
 	void setFullScaleAccelRange(byte range);
 	/// \brief
-	/// Return accelerometer Range
+	/// Return Gyroscope Sensitivity
 	/// \details
-	/// Return the accelerometer range specified in the datasheet
-	double getFullScaleAccelRange();
+	/// Returns the sensitivity value used in converting the raw values to understandable values. These values are specified in the datasheet and are:
+	/// Range|Sensitivity
+	///   0  | 16384.0
+	///   1  | 8192.0
+	///   2  | 4096.0
+	///   3  | 2048.0
+	int16_t getFullScaleAccelSensitivity();
 	
 	/// \brief
 	/// Measure Accelerometer and Gyroscope
 	/// \details
-	/// Measures the accelerometer and gyroscope values
+	/// Measures all the accelerometer values by using combining both the accelerometer setter and the gyroscope setter.
 	void setAccelGyro();
 	/// \brief
 	/// Measure Accelerometer
 	/// \details
-	/// Measures all the accelerometer values
+	/// Measures and sets only the accelerometer values. These values are set in seperate functions for the x, y and z.
 	void setAccel();
 	/// \brief
 	/// Measure Accelerometer X
 	/// \details
-	/// Measures the accelerometer x value.
+	/// Measures the accelerometer x value using the read16bit function using the x high and x low as the addresses.
 	void setAccelX();
 	/// \brief
 	/// Measure Accelerometer Y
 	/// \details
-	/// Measures the accelerometer y value.
+	/// Measures the accelerometer y value using the read16bit function using the y high and y low as the addresses.
 	void setAccelY();
 	/// \brief
 	/// Measure Accelerometer Z
 	/// \details
-	/// Measures the accelerometer z value.
+	/// Measures the accelerometer z value using the read16bit function using the z high and z low as the addresses.
 	void setAccelZ();
 	/// \brief
 	/// Return Accel X
 	/// \details
-	/// Returnes the accelerometer x value.
+	/// Returnes the accelerometer x value, which is set by the setAccelX function.
 	int16_t getAccelX();
 	/// \brief
 	/// Return Accel Y
 	/// \details
-	/// Returnes the accelerometer y value.
+	/// Returnes the accelerometer y value, which is set by the setAccelY function.
 	int16_t getAccelY();
 	/// \brief
 	/// Return Accel Z
 	/// \details
-	/// Returnes the accelerometer z value.
+	/// Returnes the accelerometer z value, which is set by the setAccelZ function.
 	int16_t getAccelZ();
 	
 	/// \brief
 	/// Measure Gyroscope
 	/// \details
-	/// Measures all the gyroscope values
+	/// Measures and sets only the gyroscope values. These values are set in seperate functions for the x, y and z.
 	void setGyro();
 	/// \brief
 	/// Measure Gyroscope X
 	/// \details
-	/// Measures the gyroscope x value
+	/// Measures the gyroscope x value using the read16bit function using the x high and x low as the addresses.
 	void setGyroX();
 	/// \brief
 	/// Measure Gyroscope Y
 	/// \details
-	/// Measures the gyroscope y value
+	/// Measures the gyroscope y value using the read16bit function using the y high and y low as the addresses.
 	void setGyroY();
 	/// \brief
 	/// Measure Gyroscope Z
 	/// \details
-	/// Measures the gyroscope z value
+	/// Measures the gyroscope z value using the read16bit function using the z high and z low as the addresses.
 	void setGyroZ();
 	/// \brief
 	/// Return Gyro X
 	/// \details
-	/// Returnes the accelerometer x value.
+	/// Returnes the gyroscope x value, which is set by the setGyroX function.
 	int16_t getGyroX();
 	/// \brief
 	/// Return Gyro Y
 	/// \details
-	/// Returnes the accelerometer y value.
+	/// Returnes the gyroscope y value, which is set by the setGyroY function.
 	int16_t getGyroY();
 	/// \brief
 	/// Return Gyro Z
 	/// \details
-	/// Returnes the accelerometer z value.
+	/// Returnes the gyroscope z value, which is set by the setGyroZ function.
 	int16_t getGyroZ();
 	
 	/// \brief
@@ -371,6 +370,43 @@ public:
 	/// \details
 	/// Returnes the gyroscope z offset value which is created in calibrate().
 	int16_t getOffsetGyroZ();
+	
+	/// \brief
+	/// Measure Rotation
+	/// \details
+	/// Calculates the rotation values into rotations a minute. It uses the appropriate x, y and z functions to do so.
+	void setRot();
+	/// \brief
+	/// Calculate X rotation
+	/// \description
+	/// Calculate rotations per minute around the x axes by deviding the raw value through the senitivity value, which is gotten in getFullScaleGyroSensitivity. 
+	void setRotX();
+	/// \brief
+	/// Calculate Y rotation
+	/// \description
+	/// Calculate rotations per minute around the y axes by deviding the raw value through the senitivity value, which is gotten in getFullScaleGyroSensitivity. 
+	void setRotY();
+	/// \brief
+	/// Calculate Z rotation
+	/// \description
+	/// Calculate rotations per minute around the z axes by deviding the raw value through the senitivity value, which is gotten in getFullScaleGyroSensitivity. 
+	void setRotZ();
+	
+	/// \brief
+	/// Return Rotation X
+	/// \description
+	/// Returns the rotx value, which is calculated in setRotX.
+	int16_t getRotX();
+	/// \brief
+	/// Return Rotation Y
+	/// \description
+	/// Returns the roty value, which is calculated in setRotY.
+	int16_t getRotY();
+	/// \brief
+	/// Return Rotation Z
+	/// \description
+	/// Returns the rotZ value, which is calculated in setRotZ.
+	int16_t getRotZ();
 };
 
 #endif // MPU6050_HPP

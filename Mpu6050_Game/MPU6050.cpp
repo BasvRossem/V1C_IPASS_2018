@@ -1,5 +1,5 @@
 #include "MPU6050.hpp"
-
+/// @file 
 int MPU6050::whoAmI(){
 	byte data[] = {MPU6050_WHO_AM_I};
 	i2c_bus.write(deviceAddress, data, 1);
@@ -32,7 +32,7 @@ void MPU6050::setFullScaleGyroRange(byte gyroFullScaleSelect){
 	byte data[] = {MPU6050_GYRO_CONFIG, gyroFullScaleSelect};
 	i2c_bus.write(deviceAddress, data, 2);
 }
-double MPU6050::getFullScaleGyroRange(){
+int16_t MPU6050::getFullScaleGyroSensitivity(){
 	byte data[] = {MPU6050_GYRO_CONFIG};
 	i2c_bus.write(deviceAddress, data, 1);
 	i2c_bus.read(deviceAddress, data, 1);
@@ -56,21 +56,21 @@ void MPU6050::setFullScaleAccelRange(byte accelFullScaleSelect){
 	byte data[] = {MPU6050_ACCEL_CONFIG, accelFullScaleSelect};
 	i2c_bus.write(deviceAddress, data, 2);
 }
-double MPU6050::getFullScaleAccelRange(){
+int16_t MPU6050::getFullScaleAccelSensitivity(){
 	byte data[] = {MPU6050_ACCEL_CONFIG};
 	i2c_bus.write(deviceAddress, data, 1);
 	i2c_bus.read(deviceAddress, data, 1);
 	fullScaleAccelRange = (data[0] >> 3) & 0x03;
 	if (fullScaleAccelRange == 0) {
-		accelSensitivity = 16384.0;
+		accelSensitivity = 16384;
 	} else if (fullScaleAccelRange == 1) {
-		accelSensitivity =  8192.0;
+		accelSensitivity =  8192;
 	} else if (fullScaleAccelRange == 2) {
-		accelSensitivity =  4096.0;
+		accelSensitivity =  4096;
 	} else if (fullScaleAccelRange == 3) {
-		accelSensitivity =  2048.0;
+		accelSensitivity =  2048;
 	} else {
-		accelSensitivity = 16384.0;
+		accelSensitivity = 16384;
 	}
 	return accelSensitivity;
 }
@@ -130,8 +130,8 @@ int16_t MPU6050::getGyroZ(){
 void MPU6050::calibrate(){
 	hwlib::cout << "Calibration started, keep device still.\n";
 	hwlib::wait_ms(250);
-	uint32_t deltaAccelX = 0, deltaAccelY = 0, deltaAccelZ = 0;
-	uint32_t deltaGyroX = 0, deltaGyroY = 0, deltaGyroZ = 0;
+	int32_t deltaAccelX = 0, deltaAccelY = 0, deltaAccelZ = 0;
+	int32_t deltaGyroX = 0, deltaGyroY = 0, deltaGyroZ = 0;
 	for(unsigned int i = 0; i < 50; i++){
 		setAccelGyro();
 		deltaAccelX += getAccelX();
@@ -152,23 +152,23 @@ void MPU6050::calibrate(){
 	hwlib::cout << "Calibration complete.\n";
 }
 
-uint16_t MPU6050::getOffsetAccelX(){
+int16_t MPU6050::getOffsetAccelX(){
 	return offsetAccelX;
 }
-uint16_t MPU6050::getOffsetAccelY(){
+int16_t MPU6050::getOffsetAccelY(){
 	return offsetAccelY;
 }
-uint16_t MPU6050::getOffsetAccelZ(){
+int16_t MPU6050::getOffsetAccelZ(){
 	return offsetAccelZ;
 }
 
-uint16_t MPU6050::getOffsetGyroX(){
+int16_t MPU6050::getOffsetGyroX(){
 	return offsetGyroX;
 }
-uint16_t MPU6050::getOffsetGyroY(){
+int16_t MPU6050::getOffsetGyroY(){
 	return offsetGyroY;
 }
-uint16_t MPU6050::getOffsetGyroZ(){
+int16_t MPU6050::getOffsetGyroZ(){
 	return offsetGyroZ;
 }
 
@@ -183,4 +183,29 @@ int16_t MPU6050::getTempInCelcius() {
 
 int16_t MPU6050::getTemp() {
 	return temperatureInCelcius;
+}
+
+void MPU6050::setRot(){
+	setRotX();
+	setRotY();
+	setRotZ();
+}
+void MPU6050::setRotX(){
+	rotX = gyroX / (getFullScaleGyroSensitivity());
+}
+void MPU6050::setRotY(){
+	rotY = gyroY / (getFullScaleGyroSensitivity());
+}
+void MPU6050::setRotZ(){
+	rotZ = gyroZ / (getFullScaleGyroSensitivity());
+}
+
+int16_t MPU6050::getRotX(){
+	return rotX;
+}
+int16_t MPU6050::getRotY(){
+	return rotY;
+}
+int16_t MPU6050::getRotZ(){
+	return rotZ;
 }

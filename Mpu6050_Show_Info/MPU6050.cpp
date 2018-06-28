@@ -32,7 +32,7 @@ void MPU6050::setFullScaleGyroRange(byte gyroFullScaleSelect){
 	byte data[] = {MPU6050_GYRO_CONFIG, gyroFullScaleSelect};
 	i2c_bus.write(deviceAddress, data, 2);
 }
-double MPU6050::getFullScaleGyroRange(){
+int16_t MPU6050::getFullScaleGyroSensitivity(){
 	byte data[] = {MPU6050_GYRO_CONFIG};
 	i2c_bus.write(deviceAddress, data, 1);
 	i2c_bus.read(deviceAddress, data, 1);
@@ -56,21 +56,21 @@ void MPU6050::setFullScaleAccelRange(byte accelFullScaleSelect){
 	byte data[] = {MPU6050_ACCEL_CONFIG, accelFullScaleSelect};
 	i2c_bus.write(deviceAddress, data, 2);
 }
-double MPU6050::getFullScaleAccelRange(){
+int16_t MPU6050::getFullScaleAccelSensitivity(){
 	byte data[] = {MPU6050_ACCEL_CONFIG};
 	i2c_bus.write(deviceAddress, data, 1);
 	i2c_bus.read(deviceAddress, data, 1);
 	fullScaleAccelRange = (data[0] >> 3) & 0x03;
 	if (fullScaleAccelRange == 0) {
-		accelSensitivity = 16384.0;
+		accelSensitivity = 16384;
 	} else if (fullScaleAccelRange == 1) {
-		accelSensitivity =  8192.0;
+		accelSensitivity =  8192;
 	} else if (fullScaleAccelRange == 2) {
-		accelSensitivity =  4096.0;
+		accelSensitivity =  4096;
 	} else if (fullScaleAccelRange == 3) {
-		accelSensitivity =  2048.0;
+		accelSensitivity =  2048;
 	} else {
-		accelSensitivity = 16384.0;
+		accelSensitivity = 16384;
 	}
 	return accelSensitivity;
 }
@@ -183,4 +183,29 @@ int16_t MPU6050::getTempInCelcius() {
 
 int16_t MPU6050::getTemp() {
 	return temperatureInCelcius;
+}
+
+void MPU6050::setRot(){
+	setRotX();
+	setRotY();
+	setRotZ();
+}
+void MPU6050::setRotX(){
+	rotX = gyroX / (getFullScaleGyroSensitivity());
+}
+void MPU6050::setRotY(){
+	rotY = gyroY / (getFullScaleGyroSensitivity());
+}
+void MPU6050::setRotZ(){
+	rotZ = gyroZ / (getFullScaleGyroSensitivity());
+}
+
+int16_t MPU6050::getRotX(){
+	return rotX;
+}
+int16_t MPU6050::getRotY(){
+	return rotY;
+}
+int16_t MPU6050::getRotZ(){
+	return rotZ;
 }
