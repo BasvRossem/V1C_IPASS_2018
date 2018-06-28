@@ -9,10 +9,10 @@
 #############################################################################
 
 # source files in this project (main.cpp is automatically assumed)
-SOURCES := MPU6050.cpp servo.cpp PWM_signal.cpp line.cpp rectangle.cpp player.cpp
+SOURCES := MPU6050.cpp MPU6050_test.cpp
 
 # header files in this project
-HEADERS := MPU6050.hpp servo.hpp PWM_signal.hpp line.hpp rectangle.hpp player.hpp
+HEADERS := MPU6050.hpp
 
 # other places to look for files for this project
 SEARCH  := 

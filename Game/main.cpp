@@ -5,7 +5,8 @@
 #include "player.hpp"
 #include <stdlib.h>
 
-int randomInt(int max, auto & time){
+int randomInt(int max, auto & time, auto & mpu){
+	srand(mpu.getGyroX());
 	int value = rand() % max;
 	return value;
 }
@@ -49,9 +50,9 @@ bool checkIfFinished(auto & person, auto & goal){
 	}
 }
 
-rectangle createGoal(auto & oled, auto & time){
-	int goalStartX = randomInt(100, time);
-	int goalStartY = randomInt(40, time);
+rectangle createGoal(auto & oled, auto & time, auto & mpu){
+	int goalStartX = randomInt(100, time, mpu);
+	int goalStartY = randomInt(40, time, mpu);
 	if(goalStartX < 2){
 		goalStartX = 2;
 	}
@@ -85,7 +86,8 @@ void reduceTime(auto & time, auto & oled){
 }
 
 void newGame(auto & oled, auto & time, auto & mpu, auto & gameOver, auto & score, auto & scoreDisplay,  auto & font){
-	auto goal = createGoal(oled, time);
+	mpu.setGyro();
+	auto goal = createGoal(oled, time, mpu);
 	auto person = player(oled, 64,32);
 	goal.draw();
 	scoreDisplay << "\f" << score << hwlib::flush;
