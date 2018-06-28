@@ -14,20 +14,36 @@ private:
 	
 	byte deviceAddress;
 	
-	//Raw values
+	/// \brief
+	/// Raw Values
+	/// \details
+	/// These are the raw values that the chip returns,
+	/// these include the accelerometer, gyrscope and thermometer values.
 	int16_t accelX, accelY, accelZ;
 	int16_t gyroX, gyroY, gyroZ;
 	int16_t temperature;
-	int16_t temperatureInCelcius;
 	
-	//Offset
-	uint16_t offsetAccelX, offsetAccelY, offsetAccelZ;
-	uint16_t offsetGyroX, offsetGyroY, offsetGyroZ;
+	/// \brief
+	/// Offset
+	/// \details
+	/// These are the offset values for the accelerometer and the gyroscope,
+	/// these values are the average over a few measurements,
+	/// they can be used to make the values which are returned more accurate.
+	int16_t offsetAccelX, offsetAccelY, offsetAccelZ;
+	int16_t offsetGyroX, offsetGyroY, offsetGyroZ;
 	
-	//Readable values
+	/// \brief
+	/// Readable Values
+	/// \details
+	/// These are the values after they have been converted into someething understandable.
 	double gForceX, gForceY, gForceZ;
 	double rotX, rotY, rotZ;
+	int16_t temperatureInCelcius;
 	
+	/// \brief
+	/// Full Scale Range
+	/// \details
+	/// These are the ranges in which the chip can measure
 	byte fullScaleAccelRange;
 	byte fullScaleGyroRange;
 	
@@ -181,50 +197,180 @@ public:
 		deviceAddress(address)
 	{};
 	
+	/// \brief
+	/// Returns address
+	/// \details
+	/// Using the Who am I returns the value of the address of the chip which is usually 104
 	int whoAmI();
+	
+	/// \brief
+	/// Wake up the MPU
+	/// \details
+	/// Wakes up the MPU by setting all the bits on the power management address 0
 	void wakeUp();
+	/// \brief
+	/// Read a Byte
+	/// \details
+	/// Returns one byte of data from the specified address
 	byte read8bit(const byte & address);
+	/// \brief
+	/// Read Two Bytes
+	/// \details
+	/// Returns two bytes of data from the specified address
 	int16_t read16bit(const byte & addressHigh, const byte & addressLow);
 	
+	/// \brief
+	/// Calibrate Mpu6050
+	/// \details
+	/// Calculates the average offset of values and sets these offsets
 	void calibrate();
 	
-	//Temperature
+	/// \brief
+	/// Measure temperatue
+	/// \details
+	/// Measures the temperature value
 	void setTemp();
+	/// \brief
+	/// Return Temperature Celcuis
+	/// \details
+	/// Returnes the temperature in celcuis
 	int16_t getTempInCelcius();
+	/// \brief
+	/// Return Temperature
+	/// \details
+	/// Returnes the temperature value
 	int16_t getTemp();
 	
-	// Gyro ranges
+	/// \brief
+	/// Set Gyroscope Range
+	/// \details
+	/// Set the gyroscope range to a specific range specified in the datasheet
 	void setFullScaleGyroRange(byte range);
+	/// \brief
+	/// Return Gyroscope Range
+	/// \details
+	/// Return the Gyroscope range as specified in the datasheet
 	double getFullScaleGyroRange();
 	
-	// Accel ranges
+	/// \brief
+	/// Set accelerometer Range
+	/// \details
+	/// Set the accelerometer range to a specific range as specified in the datasheet
 	void setFullScaleAccelRange(byte range);
+	/// \brief
+	/// Return accelerometer Range
+	/// \details
+	/// Return the accelerometer range specified in the datasheet
 	double getFullScaleAccelRange();
 	
+	/// \brief
+	/// Measure Accelerometer and Gyroscope
+	/// \details
+	/// Measures the accelerometer and gyroscope values
 	void setAccelGyro();
+	/// \brief
+	/// Measure Accelerometer
+	/// \details
+	/// Measures all the accelerometer values
 	void setAccel();
+	/// \brief
+	/// Measure Accelerometer X
+	/// \details
+	/// Measures the accelerometer x value.
 	void setAccelX();
+	/// \brief
+	/// Measure Accelerometer Y
+	/// \details
+	/// Measures the accelerometer y value.
 	void setAccelY();
+	/// \brief
+	/// Measure Accelerometer Z
+	/// \details
+	/// Measures the accelerometer z value.
 	void setAccelZ();
+	/// \brief
+	/// Return Accel X
+	/// \details
+	/// Returnes the accelerometer x value.
 	int16_t getAccelX();
+	/// \brief
+	/// Return Accel Y
+	/// \details
+	/// Returnes the accelerometer y value.
 	int16_t getAccelY();
+	/// \brief
+	/// Return Accel Z
+	/// \details
+	/// Returnes the accelerometer z value.
 	int16_t getAccelZ();
 	
+	/// \brief
+	/// Measure Gyroscope
+	/// \details
+	/// Measures all the gyroscope values
 	void setGyro();
+	/// \brief
+	/// Measure Gyroscope X
+	/// \details
+	/// Measures the gyroscope x value
 	void setGyroX();
+	/// \brief
+	/// Measure Gyroscope Y
+	/// \details
+	/// Measures the gyroscope y value
 	void setGyroY();
+	/// \brief
+	/// Measure Gyroscope Z
+	/// \details
+	/// Measures the gyroscope z value
 	void setGyroZ();
+	/// \brief
+	/// Return Gyro X
+	/// \details
+	/// Returnes the accelerometer x value.
 	int16_t getGyroX();
+	/// \brief
+	/// Return Gyro Y
+	/// \details
+	/// Returnes the accelerometer y value.
 	int16_t getGyroY();
+	/// \brief
+	/// Return Gyro Z
+	/// \details
+	/// Returnes the accelerometer z value.
 	int16_t getGyroZ();
 	
-	uint16_t getOffsetAccelX();
-	uint16_t getOffsetAccelY();
-	uint16_t getOffsetAccelZ();
+	/// \brief
+	/// Return Offset Accel X
+	/// \details
+	/// Returnes the accelerometer x offset value which is created in calibrate().
+	int16_t getOffsetAccelX();
+	/// \brief
+	/// Return Offset Accelerometer Y
+	/// \details
+	/// Returnes the accelerometer y offset value which is created in calibrate().
+	int16_t getOffsetAccelY();
+	/// \brief
+	/// Return Offset Accelerometer Z
+	/// \details
+	/// Returnes the accelerometer Z offset value which is created in calibrate().
+	int16_t getOffsetAccelZ();
 	
-	uint16_t getOffsetGyroX();
-	uint16_t getOffsetGyroY();
-	uint16_t getOffsetGyroZ();
+	/// \brief
+	/// Return Offset Gyroscope X
+	/// \details
+	/// Returnes the gyroscope x offset value which is created in calibrate().
+	int16_t getOffsetGyroX();
+	/// \brief
+	/// Return Offset Gyroscope Y
+	/// \details
+	/// Returnes the gyroscope y offset value which is created in calibrate().
+	int16_t getOffsetGyroY();
+	/// \brief
+	/// Return Offset Gyroscope Z
+	/// \details
+	/// Returnes the gyroscope z offset value which is created in calibrate().
+	int16_t getOffsetGyroZ();
 };
 
 #endif // MPU6050_HPP

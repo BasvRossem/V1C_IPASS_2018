@@ -1,5 +1,5 @@
 #include "MPU6050.hpp"
-
+/// @file 
 int MPU6050::whoAmI(){
 	byte data[] = {MPU6050_WHO_AM_I};
 	i2c_bus.write(deviceAddress, data, 1);
@@ -130,8 +130,8 @@ int16_t MPU6050::getGyroZ(){
 void MPU6050::calibrate(){
 	hwlib::cout << "Calibration started, keep device still.\n";
 	hwlib::wait_ms(250);
-	uint32_t deltaAccelX = 0, deltaAccelY = 0, deltaAccelZ = 0;
-	uint32_t deltaGyroX = 0, deltaGyroY = 0, deltaGyroZ = 0;
+	int32_t deltaAccelX = 0, deltaAccelY = 0, deltaAccelZ = 0;
+	int32_t deltaGyroX = 0, deltaGyroY = 0, deltaGyroZ = 0;
 	for(unsigned int i = 0; i < 50; i++){
 		setAccelGyro();
 		deltaAccelX += getAccelX();
@@ -152,23 +152,23 @@ void MPU6050::calibrate(){
 	hwlib::cout << "Calibration complete.\n";
 }
 
-uint16_t MPU6050::getOffsetAccelX(){
+int16_t MPU6050::getOffsetAccelX(){
 	return offsetAccelX;
 }
-uint16_t MPU6050::getOffsetAccelY(){
+int16_t MPU6050::getOffsetAccelY(){
 	return offsetAccelY;
 }
-uint16_t MPU6050::getOffsetAccelZ(){
+int16_t MPU6050::getOffsetAccelZ(){
 	return offsetAccelZ;
 }
 
-uint16_t MPU6050::getOffsetGyroX(){
+int16_t MPU6050::getOffsetGyroX(){
 	return offsetGyroX;
 }
-uint16_t MPU6050::getOffsetGyroY(){
+int16_t MPU6050::getOffsetGyroY(){
 	return offsetGyroY;
 }
-uint16_t MPU6050::getOffsetGyroZ(){
+int16_t MPU6050::getOffsetGyroZ(){
 	return offsetGyroZ;
 }
 
